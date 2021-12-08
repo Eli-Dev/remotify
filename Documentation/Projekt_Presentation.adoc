@@ -1,0 +1,16 @@
+= Remotify
+:author: Andy Aziri, Sedad Sultanovic, Elias Gstallnig
+
+== Ziele
+
+* Fernbedienung für PC
+* Android App
+* Touchpad simulieren
+* Tastatur simulieren
+* File-Sharing zwischen PC und Handy
+
+=== Nice-To-Have Ziele
+
+* IOS App
+* Laser-Pointer simulieren mit Gyroskop
+* Einfache Funktionen zu Lauter/Leiser Tasten mappen (Makros)

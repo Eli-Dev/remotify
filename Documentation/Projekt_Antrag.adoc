@@ -1,0 +1,78 @@
+= Projektantrag Remotify
+
+== Beschreibung
+
+Mithilfe von Remotify wird man seinen Computer von seinem Smartphone aus steuern können. Auch File-Sharing zwischen den beiden Geräten wird möglich sein.
+
+== Nutzen
+
+* Präsentieren
+    ** Slides wechseln
+    ** Laserpointer simulieren
+* Schnell Foto machen und sofort am Computer verwenden
+* Schneller, kostenloser Ersatz für Maus und Tastatur
+
+== Konsequenzen bei Nichtdurchführung
+
+* Präsentator muss dauernd zum Computer gehen
+
+== Projektteam
+
+* Andy Aziri
+* Elias Gstallnig
+* Sultanovic Sedad (Projektleiter)
+
+== Ziele
+
+* Fernbedienung für PC
+* Android App
+* Touchpad simulieren
+* Tastatur simulieren
+* File-Sharing zwischen PC und Handy
+
+=== Optionale Ziele
+
+* IOS App
+* Laser-Pointer simulieren mit Gyroskop (Bewegungssensor)
+* Einfache Funktionen zu Lauter/Leiser Tasten mappen (Makros)
+
+== Meilensteine
+
+[cols="5,^1,^1"]
+|====
+|Meilenstein|von|bis
+
+|Maus und Tastatur auf Windows mit Programm kontrollieren
+|10.12.2021
+|13.01.2022
+
+|Verbindung zwischen Computer und Handy (Socket)
+|13.01.2022
+|04.02.2022
+
+|File-Sharing (App erstellen)
+|04.02.2022
+|04.03.2022
+
+|Tastatur über Handy steuerbar
+|04.03.2022
+|25.03.2022
+
+|Maus über Handy steuerbar
+|25.03.2022
+|08.04.2022
+
+|Slides mit Lauter-/Leiser-Tasten wechseln
+|08.04.2022
+|29.04.2022
+
+|Laserpointer simulierbar
+|29.04.2022
+|03.06.2022
+
+|====
+
+== Technologien
+
+* App(s): Angular (Ionic)
+* Backend am Computer: C#/.NET (für Windows)
