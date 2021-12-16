@@ -1,0 +1,148 @@
+= Class Diagrams
+
+== Backend
+
+[plantuml]
+....
+@startuml
+
+' use standard access modifiers
+' skinparam classAttributeIconSize 0
+
+title Backend (am Computer)
+
+class Keyboard {
+    - actKey: Key
+
+    + setActKey(Key): void
+    + pressActKey(): void
+}
+
+class SlideChanger {
+    - action: SlideAction
+
+    + doAction(SlideAction): void
+}
+
+enum SlideAction {
+    + nextSlide
+    + prevSlide
+    + slideOverview
+    + startSlides
+    + toggleLaserPointer
+}
+
+class Mouse {
+    - coordX: double
+    - coordY: double
+
+    + setMouseCoords(double, double): void
+    + moveMouseToCoords(): void
+}
+
+class Laserpointer {
+    - orientation: Orientation
+
+    + setOrientation(Orientation): void
+}
+
+class Orientation {
+    + tiltX: double
+    + tiltY: double
+    + tiltZ: double
+}
+
+class File {
+    + saveLocation: fileLocation
+    - content: byte[]
+
+    + saveFile(byte[]): bool
+}
+
+class Controller {
+    - keyboard: Keyboard
+    - mouse: Mouse
+    - slideChanger: SlideChanger
+    - laserPointer: LaserPointer
+
+    + onResponseReceived(ResponseEvent): void
+}
+
+class SocketConnection <<Singleton>> {
+    - clientConnectionStr: String
+    - eventHandler: EventHandler
+
+    + establishConnection(): bool
+    + sendData(): bool
+    + subscribeToResponse(): void
+}
+
+class ResponseEvent {
+    + data: byte[]
+    + timestamp: long
+    + state: bool
+    + sender: string
+}
+
+Mouse --|> Laserpointer
+Laserpointer --right--> Orientation
+
+Keyboard --|> SlideChanger
+SlideChanger --left--> SlideAction
+
+SocketConnection --right--> Controller
+SocketConnection --down--> ResponseEvent
+
+Controller --down--> ResponseEvent
+
+Controller --down--> Keyboard
+Controller --down--> Mouse
+Controller --down--> SlideChanger
+Controller --down--> Laserpointer
+Controller --right--> File
+
+@enduml
+....
+
+== Frontend
+
+[plantuml]
+....
+@startuml
+
+title Frontend (App)
+
+' use standard access modifiers
+' skinparam classAttributeIconSize 0
+
+class Keyboard {
+    - connection: Connection
+
+    + sendKey(key: Key): void
+}
+
+class Touchpad {
+    - connection: Connection
+
+    + sendPosition(Point): void
+}
+
+class Laserpointer {
+    - connection: Connection
+
+    + sendTilt(Tilt, Tilt, Tilt): void
+}
+
+class Connection <<Service>> {
+    - serverConnectionString: string
+
+    + sendData(string): Promise<string>
+    + waitForResponse(): string
+}
+
+Keyboard --down--> Connection
+Touchpad --down--> Connection
+Laserpointer --down--> Connection
+
+@enduml
+....
