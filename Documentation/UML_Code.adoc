@@ -1,6 +1,8 @@
-= Class Diagrams
+= UML Diagrams
 
-== Backend
+== Class-Diagrams
+
+=== Class-Diagram Backend
 
 [plantuml]
 ....
@@ -84,10 +86,10 @@ class ResponseEvent {
     + sender: string
 }
 
-Mouse --|> Laserpointer
+Mouse <|-- Laserpointer
 Laserpointer --right--> Orientation
 
-Keyboard --|> SlideChanger
+Keyboard <|-- SlideChanger
 SlideChanger --left--> SlideAction
 
 SocketConnection --right--> Controller
@@ -104,7 +106,7 @@ Controller --right--> File
 @enduml
 ....
 
-== Frontend
+=== Class-Diagram Frontend
 
 [plantuml]
 ....
@@ -143,6 +145,53 @@ class Connection <<Service>> {
 Keyboard --down--> Connection
 Touchpad --down--> Connection
 Laserpointer --down--> Connection
+
+@enduml
+....
+
+== Use-Case diagram
+
+[plantuml]
+....
+@startuml
+
+skinparam componentStyle rectangle
+left to right direction
+
+actor "App User" as u
+
+package App {
+    usecase "Connect to PC" as connect
+    usecase "Select PC from list" as selectPC
+    usecase "Confirm connection on PC" as confirmPC
+
+    usecase "Use phone-keyboard" as key
+    usecase "Use Touchpad" as touch
+    usecase "Send file" as file
+    usecase "Physically move phone" as laserpointer
+}
+
+component PC <<Actor>> {
+    
+}
+
+u "1" --> "1" connect
+
+connect ..> selectPC: <<include>>
+selectPC ..> confirmPC: <<include>>
+confirmPC --> PC
+
+u "1" --> "0..*" key
+key --> PC
+
+u "1" --> "0..*" touch
+touch --> PC
+
+u "1" --> "0..*" file
+file --> PC
+
+u "1" --> "0..*" laserpointer
+laserpointer --> PC
 
 @enduml
 ....

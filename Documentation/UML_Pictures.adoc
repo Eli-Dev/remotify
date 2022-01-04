@@ -1,0 +1,14 @@
+= Class Diagrams
+:imagesdir: ./assets
+
+== Backend
+
+image::Backend_UML_Class_Diagram.png[Backend Class Diagram]
+
+== Frontend
+
+image::Frontend_UML_Class_Diagram.png[Frontend Class Diagram]
+
+== Use-Case Diagram
+
+image::UML_Usecase_Diagram.png[Use-Case Diagram]
