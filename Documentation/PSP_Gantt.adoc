@@ -1,2 +1,10 @@
 = Projektplanung
+:imagesdir: assets
 
+== Projektstrukturplan und Meilensteine
+
+image::PSP.png[width=100%, PSP]
+
+== Gantt-Diagramm (Zeitplan)
+
+image::Gantt.png[width=100%, Gantt-Diagramm]
