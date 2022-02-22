@@ -1,0 +1,7 @@
+{
+  "name": "remotify-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
