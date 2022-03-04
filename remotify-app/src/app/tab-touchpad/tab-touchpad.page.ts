@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {WebsocketService} from '../services/websocket.service';
 
 @Component({
   selector: 'app-tab-touchpad',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabTouchpadPage implements OnInit {
 
-  constructor() { }
+  constructor(public websocketService: WebsocketService) { }
 
   ngOnInit() {
   }

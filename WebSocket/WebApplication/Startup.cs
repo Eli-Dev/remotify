@@ -21,6 +21,7 @@ namespace WebApplication
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -66,7 +67,7 @@ namespace WebApplication
                 var msg = Encoding.UTF8.GetString(new ArraySegment<byte>(buffer, 0, result.Count));
                 Console.WriteLine($"Client says: {msg}");
                 
-                await webSocket.SendAsync(new ArraySegment<byte>(Encoding.UTF8.GetBytes($"Server says: {DateTime.UtcNow:f}")), result.MessageType, result.EndOfMessage, System.Threading.CancellationToken.None);
+                await webSocket.SendAsync(new ArraySegment<byte>(Encoding.UTF8.GetBytes($"{{ \"message\": \"Server says: {DateTime.UtcNow:f}\" }}")), result.MessageType, result.EndOfMessage, System.Threading.CancellationToken.None);
                 
                 result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), System.Threading.CancellationToken.None);
             }

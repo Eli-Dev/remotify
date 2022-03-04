@@ -1,9 +1,22 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>tab-settings</ion-title>
+    <ion-title>Settings</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Settings</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
+  <form [formGroup]="settingsForm" (ngSubmit)="submitForm()">
+    <ion-item>
+      <ion-label>PC IP-Address</ion-label>
+      <ion-input id="ip" type="text" formControlName="ip"></ion-input>
+    </ion-item>
+
+    <ion-button type="submit" [disabled]="!settingsForm.valid">submit</ion-button>
+  </form>
 </ion-content>
