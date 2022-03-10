@@ -28,7 +28,7 @@ export class TabSettingsPage implements OnInit {
     this.webSocket.ip = this.settingsForm.controls.ip.value;
     this.webSocket.connect();
 
-    this.webSocket.send({message: 'ping'});
+    this.webSocket.send({ message: 'ping' });
     this.settingsForm.controls.ip.setValue(this.webSocket.ip);
   }
 }

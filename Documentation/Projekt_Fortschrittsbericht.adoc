@@ -1,5 +1,6 @@
 = Projektfortschrittsbericht Remotify
 :author: Andy Aziri, Sedad Sultanovic, Elias Gstallnig
+:revealjsdir: /home/eli/files/Random_Stuff/AsciiDoc/revealjs/reveal.js
 :imagesdir: assets
 
 
