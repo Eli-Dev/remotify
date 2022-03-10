@@ -1,6 +1,5 @@
 = Fortschritte mit Remotify
 :author: Sedad Sultanovic, Andy Aziri, Elias Gstallnig
-:revealjsdir: /home/eli/files/Random_Stuff/AsciiDoc/revealjs/reveal.js
 
 == Abgeschlossene Arbeitspakete
 
