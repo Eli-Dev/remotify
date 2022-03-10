@@ -51,7 +51,7 @@ namespace WebApplication
                 }
                 else
                 {
-                    await next(context);
+                    await next();
                 }
 
             });

@@ -2,21 +2,23 @@ using System;
 using System.Net;
 using System.Net.Sockets;
 
-namespace WebApplication;
-
-public class Utility
+namespace WebApplication
 {
-    
-    public static string GetLocalIPAddress()
+    public class Utility
     {
-        var host = Dns.GetHostEntry(Dns.GetHostName());
-        foreach (var ip in host.AddressList)
+
+        public static string GetLocalIPAddress()
         {
-            if (ip.AddressFamily == AddressFamily.InterNetwork)
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
             {
-                return ip.ToString();
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    return ip.ToString();
+                }
             }
+
+            throw new Exception("No network adapters with an IPv4 address in the system!");
         }
-        throw new Exception("No network adapters with an IPv4 address in the system!");
     }
 }
