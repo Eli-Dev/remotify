@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
 import { ToastController } from '@ionic/angular';
+import {Command} from '../Commands/Command';
 
 @Injectable({
   providedIn: 'root'
@@ -8,13 +9,13 @@ import { ToastController } from '@ionic/angular';
 export class WebsocketService {
 
   public ip: string;
-  private webSocket: WebSocketSubject<Message>;
+  private webSocket: WebSocketSubject<Command<any>>;
 
   constructor(public toastController: ToastController) {
   }
 
   connect() {
-    this.webSocket = webSocket<Message>({
+    this.webSocket = webSocket<Command<any>>({
       url: `ws://${this.ip}:5000/ws`
     });
 
@@ -32,12 +33,8 @@ export class WebsocketService {
     );
   }
 
-  send(msg: Message) {
-    this.webSocket.next(msg);
+  send(cmd: Command<any>) {
+    this.webSocket.next(cmd);
   }
 
-}
-
-export interface Message {
-  message: string;
 }
