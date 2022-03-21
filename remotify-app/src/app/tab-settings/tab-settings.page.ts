@@ -20,15 +20,17 @@ export class TabSettingsPage implements OnInit {
 
     this.settingsForm = this.formBuilder.group({
       ip: [this.webSocket.ip,
-        [Validators.required, Validators.pattern(/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/)]],
-    });
+        [Validators.required, Validators.pattern(
+        // eslint-disable-next-line max-len
+/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/
+      )]]});
   }
 
   submitForm() {
     this.webSocket.ip = this.settingsForm.controls.ip.value;
     this.webSocket.connect();
 
-    this.webSocket.send({message: 'ping'});
+    this.webSocket.send({ command: 'test', parameters: null });
     this.settingsForm.controls.ip.setValue(this.webSocket.ip);
   }
 }
