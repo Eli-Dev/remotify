@@ -5,6 +5,13 @@
 	  <UseWindowsForms>true</UseWindowsForms>
 	  <AssemblyName>Logic</AssemblyName>
 	  <RootNamespace>Logic</RootNamespace>
+	  <ApplicationIcon />
+	  <OutputType>Library</OutputType>
+	  <StartupObject />
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WebSocket\WebSocket.csproj" />
+  </ItemGroup>
 
 </Project>

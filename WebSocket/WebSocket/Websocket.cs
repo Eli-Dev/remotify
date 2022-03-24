@@ -3,11 +3,16 @@ using Microsoft.Extensions.Hosting;
 
 namespace WebApplication
 {
-    public class Program
+    public class Websocket
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            Start();
+        }
+
+        public static void Start()
+        {
+            CreateHostBuilder(new string[0]).Build().Run();
         }
 
         private static IHostBuilder CreateHostBuilder(string[] args) =>

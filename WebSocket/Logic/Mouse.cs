@@ -1,20 +1,19 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Threading;
+using Logic;
 
 namespace MouseControl
 {
-    public class Class1
+    public class Mouse
     {
-        public void MoveCursor(int x, int y)
+        public void MoveCursor(MouseParameter parameters)
         {
             Form1 cursor = new Form1();
 
             while (true)
             {
-                cursor.Move(x, y);
-                x++;
-                y++;
+                cursor.Move(parameters.xDiff, parameters.yDiff);
                 Thread.Sleep(100);
             }
         }
