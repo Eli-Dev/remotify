@@ -12,6 +12,13 @@ namespace WebApplication
 {
     public class Startup
     {
+        public static event EventHandler<MessageReceivedEventArgs> MessageReceived;
+
+        public virtual void OnMessageReceived(MessageReceivedEventArgs e)
+        {
+            MessageReceived?.Invoke(this, e);
+        }
+        
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
@@ -42,7 +49,7 @@ namespace WebApplication
                     if (context.WebSockets.IsWebSocketRequest)
                     {
                         using var webSocket = await context.WebSockets.AcceptWebSocketAsync();
-                        await Send(webSocket);
+                        await Receive(webSocket);
                     }
                     else
                     {
@@ -57,7 +64,7 @@ namespace WebApplication
             });
         }
 
-        private async Task Send(WebSocket webSocket)
+        private async Task Receive(WebSocket webSocket)
         {
             var buffer = new byte[1024 * 4];
             var result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), System.Threading.CancellationToken.None);
@@ -65,9 +72,10 @@ namespace WebApplication
             while(!result.CloseStatus.HasValue)
             {
                 var msg = Encoding.UTF8.GetString(new ArraySegment<byte>(buffer, 0, result.Count));
-                Console.WriteLine($"Client says: {msg}");
-                
-                await webSocket.SendAsync(new ArraySegment<byte>(Encoding.UTF8.GetBytes($"{{ \"message\": \"Server says: {DateTime.UtcNow:f}\" }}")), result.MessageType, result.EndOfMessage, System.Threading.CancellationToken.None);
+                OnMessageReceived(new MessageReceivedEventArgs { Message = msg });
+
+                //Console.WriteLine($"Client says: {msg}");
+                //await webSocket.SendAsync(new ArraySegment<byte>(Encoding.UTF8.GetBytes($"{{ \"message\": \"Server says: {DateTime.UtcNow:f}\" }}")), result.MessageType, result.EndOfMessage, System.Threading.CancellationToken.None);
                 
                 result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), System.Threading.CancellationToken.None);
             }
