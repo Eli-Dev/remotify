@@ -3,6 +3,8 @@
   <PropertyGroup>
     <TargetFramework>net5.0-windows</TargetFramework>
 	  <UseWindowsForms>true</UseWindowsForms>
+	  <AssemblyName>Logic</AssemblyName>
+	  <RootNamespace>Logic</RootNamespace>
   </PropertyGroup>
 
 </Project>
