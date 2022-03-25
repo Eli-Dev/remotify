@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication", "WebApplication\WebApplication.csproj", "{62BDEA0B-F141-455A-ACED-F0FD477E5108}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebSocket", "WebSocket\WebSocket.csproj", "{62BDEA0B-F141-455A-ACED-F0FD477E5108}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ws.Client", "Ws.Client\Ws.Client.csproj", "{5549D3D5-74E1-4892-9CB7-8A389631841B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MouseControl", "MouseControl\MouseControl.csproj", "{5A7168C8-7A47-43FA-9A98-D0414814C5CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logic", "Logic\Logic.csproj", "{5A7168C8-7A47-43FA-9A98-D0414814C5CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing", "Testing\Testing.csproj", "{7B848912-FEEF-4B3F-A092-E69887527C69}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{5A7168C8-7A47-43FA-9A98-D0414814C5CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A7168C8-7A47-43FA-9A98-D0414814C5CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A7168C8-7A47-43FA-9A98-D0414814C5CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B848912-FEEF-4B3F-A092-E69887527C69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B848912-FEEF-4B3F-A092-E69887527C69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B848912-FEEF-4B3F-A092-E69887527C69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B848912-FEEF-4B3F-A092-E69887527C69}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

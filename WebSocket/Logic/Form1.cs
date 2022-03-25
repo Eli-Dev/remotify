@@ -11,9 +11,9 @@ namespace MouseControl
     public class Form1 : Form
     {
         [DllImport("user32.dll", EntryPoint = "SetCursorPos")]
-        private static extern bool SetCursorPos(int x, int y);
+        private static extern bool SetCursorPos(double x, double y);
 
-        public void Move(int x, int y)
+        public void Move(double x, double y)
         {
             SetCursorPos(x, y);
         }
