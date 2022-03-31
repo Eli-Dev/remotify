@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -11,11 +12,13 @@ namespace MouseControl
     public class Form1 : Form
     {
         [DllImport("user32.dll", EntryPoint = "SetCursorPos")]
-        private static extern bool SetCursorPos(double x, double y);
+        private static extern bool SetCursorPos(double xDiff, double yDiff, double xVelocity, double yVelocity);
 
-        public void Move(double x, double y)
+        
+
+        public void Move(double xDiff, double yDiff, double xVelocity, double yVelocity)
         {
-            SetCursorPos(x, y);
+            SetCursorPos(xDiff, yDiff, xVelocity, yVelocity);
         }
     }
 }

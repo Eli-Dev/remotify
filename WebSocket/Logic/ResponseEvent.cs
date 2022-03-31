@@ -8,7 +8,8 @@ namespace Logic
 {
     class ResponseEvent<T>
     {
-        String command;
-        T param;
+
+        public String Command { get; set; }
+        public T parameters { get; set; }
     }
 }

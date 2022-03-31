@@ -9,6 +9,7 @@ namespace Testing
     {
         static void Main(string[] args)
         {
+
             Thread t = new Thread(Websocket.Start);
             t.Start();
             new Controller();

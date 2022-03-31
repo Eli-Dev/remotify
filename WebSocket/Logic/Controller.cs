@@ -18,8 +18,23 @@ namespace Logic
 
         private void Startup_MessageReceived(object sender, MessageReceivedEventArgs e)
         {
-            //ResponseEvent<MouseParameter>? response = JsonSerializer.Deserialize<ResponseEvent<MouseParameter>>(txt);
-            Console.WriteLine(e.Message);
+            if (e.Message.Contains("mouse"))
+            {
+                ResponseEvent<MouseParameter> response = JsonSerializer.Deserialize<ResponseEvent<MouseParameter>>(e.Message);
+                Console.WriteLine("XDIFF: " + response.parameters.xDiff);
+                /*MouseParameter mouseParams = JsonSerializer.Deserialize<MouseParameter>(e.Message);
+                Console.WriteLine("XDIFF: " + mouseParams.XDiff);*/
+            }
+
+            /*switch(e.Message)
+            {
+                case "mouse":
+                    Console.WriteLine("Test");
+                    ResponseEvent<MouseParameter> response = JsonSerializer.Deserialize<ResponseEvent<MouseParameter>>(e.Message);
+                    Console.WriteLine("XDIFF: " + response.Param.XDiff);
+                    break;
+
+            }*/
         }
 
     }

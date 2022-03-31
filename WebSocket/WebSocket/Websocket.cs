@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using NetFwTypeLib;
+using System;
 
 namespace WebApplication
 {
@@ -12,6 +14,8 @@ namespace WebApplication
 
         public static void Start()
         {
+            
+
             CreateHostBuilder(new string[0]).Build().Run();
         }
 

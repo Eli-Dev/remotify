@@ -9,9 +9,8 @@ namespace Logic
     public class MouseParameter
     {
         public double xDiff { get; set; }
-        public double yDiff { get; set; }
-        public double xVelocity { get; set; }
-        public double yVelocity { get; set; }
-
+        public double YDiff { get; set; }
+        public double XVelocity { get; set; }
+        public double YVelocity { get; set; }
     }
 }

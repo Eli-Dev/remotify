@@ -11,11 +11,11 @@ namespace MouseControl
         {
             Form1 cursor = new Form1();
 
-            while (true)
-            {
-                cursor.Move(parameters.xDiff, parameters.yDiff);
-                Thread.Sleep(100);
-            }
+            double xPos = Cursor.Position.X + parameters.xDiff;
+            double yPos = Cursor.Position.Y + parameters.YDiff; 
+
+            cursor.Move(xPos, yPos, parameters.XVelocity, parameters.YVelocity);
+            Thread.Sleep(100);
         }
     }
 }
