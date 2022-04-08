@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
-using NetFwTypeLib;
-using System;
 
 namespace WebApplication
 {
@@ -14,8 +12,6 @@ namespace WebApplication
 
         public static void Start()
         {
-            
-
             CreateHostBuilder(new string[0]).Build().Run();
         }
 
@@ -24,7 +20,7 @@ namespace WebApplication
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                    webBuilder.UseUrls($"http://{Utility.GetLocalIPAddress()}:5000");
+                    webBuilder.UseUrls($"http://{Utility.GetLocalIPAddress()}:5001");
                 });
     }
 }
