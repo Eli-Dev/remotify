@@ -76,7 +76,7 @@ namespace WebApplication
                 var msg = Encoding.UTF8.GetString(new ArraySegment<byte>(buffer, 0, result.Count));
                 OnMessageReceived(new MessageReceivedEventArgs { Message = msg });
 
-                Console.WriteLine($"Client says: {msg}");
+                //SConsole.WriteLine($"Client says: {msg}");
                 //await webSocket.SendAsync(new ArraySegment<byte>(Encoding.UTF8.GetBytes($"{{ \"message\": \"Server says: {DateTime.UtcNow:f}\" }}")), result.MessageType, result.EndOfMessage, System.Threading.CancellationToken.None);
                 
                 result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), System.Threading.CancellationToken.None);

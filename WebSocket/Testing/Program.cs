@@ -10,8 +10,8 @@ namespace Testing
     {
         static void Main(string[] args)
         {
-            addInboundFirewallRule();
-            addOutboundFirewallRule();
+            //addInboundFirewallRule();
+            //addOutboundFirewallRule();
             Thread t = new Thread(Websocket.Start);
             t.Start();
             new Controller();

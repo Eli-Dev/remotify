@@ -11,6 +11,8 @@ namespace Logic
 {
     public class Controller
     {
+        Mouse mouse = new Mouse();
+
         public Controller()
         {
             Startup.MessageReceived += Startup_MessageReceived;
@@ -22,19 +24,9 @@ namespace Logic
             {
                 ResponseEvent<MouseParameter> response = JsonSerializer.Deserialize<ResponseEvent<MouseParameter>>(e.Message);
                 Console.WriteLine("XDIFF: " + response.parameters.xDiff);
-                /*MouseParameter mouseParams = JsonSerializer.Deserialize<MouseParameter>(e.Message);
-                Console.WriteLine("XDIFF: " + mouseParams.XDiff);*/
+                mouse.MoveCursor(response.parameters);
+
             }
-
-            /*switch(e.Message)
-            {
-                case "mouse":
-                    Console.WriteLine("Test");
-                    ResponseEvent<MouseParameter> response = JsonSerializer.Deserialize<ResponseEvent<MouseParameter>>(e.Message);
-                    Console.WriteLine("XDIFF: " + response.Param.XDiff);
-                    break;
-
-            }*/
         }
 
     }
