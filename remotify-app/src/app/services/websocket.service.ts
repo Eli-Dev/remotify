@@ -16,7 +16,7 @@ export class WebsocketService {
 
   connect() {
     this.webSocket = webSocket<Command<any>>({
-      url: `ws://${this.ip}:5000/ws`
+      url: `ws://${this.ip}:5001/ws`
     });
 
     this.webSocket.asObservable().subscribe(
