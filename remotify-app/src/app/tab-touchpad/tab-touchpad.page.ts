@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
-import { DomController, GestureController, IonHeader } from '@ionic/angular';
+import { DomController, GestureController } from '@ionic/angular';
 import { WebsocketService } from '../services/websocket.service';
 import { MouseParameter } from '../Commands/MouseParameter';
 
@@ -29,10 +29,10 @@ export class TabTouchpadPage implements AfterViewInit {
       gestureName: 'touchpad',
       onMove: ev => {
         const param: MouseParameter = {
-          xDiff: ev.deltaX,
-          yDiff: ev.deltaY,
-          xVelocity: ev.velocityX,
-          yVelocity: ev.velocityY
+          xDiff: ev.deltaX / window.innerWidth,
+          yDiff: ev.deltaY / window.innerHeight,
+          xVelocity: ev.velocityX / window.innerWidth,
+          yVelocity: ev.velocityY / window.innerHeight
         };
         this.websocketService.send({ command: 'mouse', parameters: param });
       }
