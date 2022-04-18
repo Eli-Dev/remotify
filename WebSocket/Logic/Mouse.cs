@@ -7,15 +7,17 @@ namespace MouseControl
 {
     public class Mouse
     {
+        private readonly Form1 cursor = new Form1();
+
         public void MoveCursor(MouseParameter parameters)
         {
-            Form1 cursor = new Form1();
+            Console.WriteLine(Cursor.Position.X + " " + parameters.xDiff + " " + cursor.ScreenWidth);
+            double xDiff = parameters.xDiff * cursor.ScreenWidth;
+            double yDiff = parameters.yDiff * cursor.ScreenHeight;
 
-            double xPos = Cursor.Position.X + parameters.xDiff;
-            double yPos = Cursor.Position.Y + parameters.yDiff; 
+            Cursor.Position = new System.Drawing.Point((int) (Cursor.Position.X + xDiff), (int) (Cursor.Position.Y + yDiff));
 
-            cursor.Move(xPos, yPos);
-            Thread.Sleep(1);
+            //Thread.Sleep(1);
         }
     }
 }

@@ -23,9 +23,7 @@ namespace Logic
             if (e.Message.Contains("mouse"))
             {
                 ResponseEvent<MouseParameter> response = JsonSerializer.Deserialize<ResponseEvent<MouseParameter>>(e.Message);
-                Console.WriteLine("XDIFF: " + response.parameters.xDiff);
                 mouse.MoveCursor(response.parameters);
-
             }
         }
 
