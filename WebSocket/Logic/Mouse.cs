@@ -12,8 +12,8 @@ namespace MouseControl
         public void MoveCursor(MouseParameter parameters)
         {
             Console.WriteLine(Cursor.Position.X + " " + parameters.xDiff + " " + cursor.ScreenWidth);
-            double xDiff = parameters.xDiff * cursor.ScreenWidth;
-            double yDiff = parameters.yDiff * cursor.ScreenHeight;
+            double xDiff = parameters.xDiff /* * cursor.ScreenWidth*/;
+            double yDiff = parameters.yDiff /* * cursor.ScreenHeight*/;
 
             Cursor.Position = new System.Drawing.Point((int) (Cursor.Position.X + xDiff), (int) (Cursor.Position.Y + yDiff));
 
