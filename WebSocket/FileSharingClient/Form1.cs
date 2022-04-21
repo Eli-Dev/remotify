@@ -39,7 +39,7 @@ namespace FileSharingClient
                 StreamWriter sw = new StreamWriter(client.GetStream());
                 sw.WriteLine(n);
                 sw.Flush();
-                label1.Text = "File Transferred....";
+                label1.Text = "Choose Location on Server";
             }
         }
 

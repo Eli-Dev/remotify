@@ -25,10 +25,10 @@ namespace FileSharingServer
 
         Int32 port = 5000;
         Int32 port1 = 5055;
-        IPAddress localAddr = IPAddress.Parse("127.0.0.1");
+        IPAddress localAddr = IPAddress.Parse("192.168.188.46");
         private void Browse_Click(object sender, EventArgs e)
         {
-
+             
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 textBox1.Text = folderBrowserDialog1.SelectedPath;
@@ -57,6 +57,11 @@ namespace FileSharingServer
             m = int.Parse(v);
             list.Stop();
             client.Close();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
