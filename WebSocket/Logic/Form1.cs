@@ -37,10 +37,22 @@ namespace MouseControl
         [DllImport("user32.dll", EntryPoint = "SetCursorPos")]
         private static extern bool SetCursorPos(double xDiff, double yDiff);
 
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern void mouse_event(int dwFlags, int dx, int dy, int cButtons, int dwExtraInfo);
+
 
         public void Move(double xDiff, double yDiff)
         {
             SetCursorPos(xDiff, yDiff);
+        }
+
+        public const int MOUSEEVENTF_LEFTDOWN = 0x02;
+        public const int MOUSEEVENTF_LEFTUP = 0x04;
+
+        public static void LeftMouseClick(int xCurrentPos, int yCurrentPos)
+        {
+            mouse_event(MOUSEEVENTF_LEFTDOWN, xCurrentPos, yCurrentPos, 0, 0);
+            mouse_event(MOUSEEVENTF_LEFTUP, xCurrentPos, yCurrentPos, 0, 0);
         }
     }
 }
