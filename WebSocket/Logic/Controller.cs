@@ -23,8 +23,18 @@ namespace Logic
             if (e.Message.Contains("mouse"))
             {
                 ResponseEvent<MouseParameter> response = JsonSerializer.Deserialize<ResponseEvent<MouseParameter>>(e.Message);
+
+                if (response.parameters.click == "left")
+                {
+                    mouse.LeftClick();
+                } else if (response.parameters.click == "right")
+                {
+                    mouse.RightClick();
+                }
                 mouse.MoveCursor(response.parameters);
             }
+
+
         }
 
     }

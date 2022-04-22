@@ -15,7 +15,7 @@ namespace Testing
             Thread t = new Thread(Websocket.Start);
             t.Start();
             new Controller();
-            Console.WriteLine("Alo");
+            //Console.WriteLine("Alo");
             Console.ReadKey();
         }
 

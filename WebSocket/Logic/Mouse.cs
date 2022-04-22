@@ -16,8 +16,16 @@ namespace MouseControl
             double yDiff = parameters.yDiff /* * cursor.ScreenHeight*/;
 
             Cursor.Position = new System.Drawing.Point((int) (Cursor.Position.X + xDiff), (int) (Cursor.Position.Y + yDiff));
+        }
 
-            //Thread.Sleep(1);
+        public void LeftClick()
+        {
+            cursor.LeftMouseClick(Cursor.Position.X, Cursor.Position.Y);
+        }
+
+        public void RightClick()
+        {
+            cursor.RightMouseClick(Cursor.Position.X, Cursor.Position.Y);
         }
     }
 }

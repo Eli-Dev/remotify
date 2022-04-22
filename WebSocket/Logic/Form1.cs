@@ -49,10 +49,19 @@ namespace MouseControl
         public const int MOUSEEVENTF_LEFTDOWN = 0x02;
         public const int MOUSEEVENTF_LEFTUP = 0x04;
 
-        public static void LeftMouseClick(int xCurrentPos, int yCurrentPos)
+        public const int MOUSEEVENTF_RIGHTDOWN = 0x08;
+        public const int MOUSEEVENTF_RIGHTUP = 0x10;
+
+        public void LeftMouseClick(int xCurrentPos, int yCurrentPos)
         {
             mouse_event(MOUSEEVENTF_LEFTDOWN, xCurrentPos, yCurrentPos, 0, 0);
             mouse_event(MOUSEEVENTF_LEFTUP, xCurrentPos, yCurrentPos, 0, 0);
+        }
+
+        public void RightMouseClick(int xCurrentPos, int yCurrentPos)
+        {
+            mouse_event(MOUSEEVENTF_RIGHTDOWN, xCurrentPos, yCurrentPos, 0, 0);
+            mouse_event(MOUSEEVENTF_RIGHTUP, xCurrentPos, yCurrentPos, 0, 0);
         }
     }
 }
