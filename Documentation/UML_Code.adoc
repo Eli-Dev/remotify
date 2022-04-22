@@ -38,8 +38,7 @@ class Mouse {
     - coordX: double
     - coordY: double
 
-    + setMouseCoords(double, double): void
-    + moveMouseToCoords(): void
+    + moveMouseToCoords(param: MouseParameter): void
 }
 
 class Laserpointer {
@@ -67,7 +66,7 @@ class Controller {
     - slideChanger: SlideChanger
     - laserPointer: LaserPointer
 
-    + onResponseReceived(ResponseEvent): void
+    + onResponseReceived(txt: String): void
 }
 
 class SocketConnection <<Singleton>> {
@@ -79,23 +78,34 @@ class SocketConnection <<Singleton>> {
     + subscribeToResponse(): void
 }
 
-class ResponseEvent {
-    + data: byte[]
-    + timestamp: long
-    + state: bool
-    + sender: string
+class ResponseEvent<T implements Parameter> {
+    + command: String
+    + param: T
+}
+
+interface Parameter {
+    + isEmpty(): bool
+}
+
+class MouseParameter {
+    + xDiff: double
+    + yDiff: double
+    + xVelocity: double
+    + yVelocity: double
 }
 
 Mouse <|-- Laserpointer
-Laserpointer --right--> Orientation
+Laserpointer --down--> Orientation
 
 Keyboard <|-- SlideChanger
-SlideChanger --left--> SlideAction
+SlideChanger --down--> SlideAction
 
 SocketConnection --right--> Controller
-SocketConnection --down--> ResponseEvent
 
 Controller --down--> ResponseEvent
+
+ResponseEvent --> Parameter
+Parameter <|-- MouseParameter
 
 Controller --down--> Keyboard
 Controller --down--> Mouse
