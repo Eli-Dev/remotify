@@ -9,4 +9,14 @@
     <ion-toolbar>
       <ion-title size="large">Touchpad</ion-title>
     </ion-toolbar>
-</ion-header>
+  </ion-header>
+
+  <div class="center-div">
+    <div #box id="box"></div>
+  </div>
+  <div class="center-horizontal">
+    <ion-button color="medium" (mousedown)="sendLeftMousePress()" (mouseup)="releaseMouse()" class="button-full-width">Left Click</ion-button>
+    <ion-button color="medium" (mousedown)="sendRightMousePress()" (mouseup)="releaseMouse()" class="button-full-width">Right Click</ion-button>
+  </div>
+
+</ion-content>
