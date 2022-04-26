@@ -3,6 +3,7 @@ import { DomController, GestureController } from '@ionic/angular';
 import { WebsocketService } from '../services/websocket.service';
 import { MouseParameter } from '../Commands/MouseParameter';
 import {SettingsService} from '../services/settings.service';
+import {GestureDetail} from "@ionic/core/dist/types/utils/gesture";
 
 @Component({
   selector: 'app-tab-touchpad',
@@ -15,6 +16,8 @@ export class TabTouchpadPage implements AfterViewInit {
 
   private lastClick = 0;
   private DOUBLE_CLICK_THRESHOLD = 500;
+
+  private lastMouseClick: string;
 
   constructor(private websocketService: WebsocketService,
               private settingsService: SettingsService,
@@ -44,28 +47,59 @@ export class TabTouchpadPage implements AfterViewInit {
         const now = Date.now();
 
         if (Math.abs(now - this.lastClick) <= this.DOUBLE_CLICK_THRESHOLD) {
-          const param: MouseParameter = {
-            xDiff: this.settingsService.touchpadSensitivity * ev.deltaX / window.innerWidth,
-            yDiff: this.settingsService.touchpadSensitivity * ev.deltaY / window.innerHeight,
-            click: null
-          };
-
           if (ev.startX <= (window.innerWidth / 2)) {
-            param.click = 'left';
+            this.lastMouseClick = 'left';
           }
           else {
-            param.click = 'right';
+            this.lastMouseClick = 'right';
           }
-
-          this.websocketService.send({ command: 'mouse', parameters: param });
+          this.sendMousePress();
 
           this.lastClick = 0;
         } else {
           this.lastClick = now;
         }
       },
+      onEnd: ev => {
+        if (this.lastClick === 0) {
+          this.releaseMouse();
+        }
+      }
     });
 
     moveGesture.enable(true);
+  }
+
+  sendLeftMousePress() {
+    this.lastMouseClick = 'left';
+    this.sendMousePress();
+  }
+
+  sendRightMousePress() {
+    this.lastMouseClick = 'right';
+    this.sendMousePress();
+  }
+
+  sendQuickMousePress() {
+    this.sendClick(this.lastMouseClick);
+    this.releaseMouse();
+  }
+
+  sendMousePress() {
+    this.sendClick(this.lastMouseClick);
+  }
+
+  sendClick(click: string) {
+    const param: MouseParameter = {
+      xDiff: 0,
+      yDiff: 0,
+      click
+    };
+    this.websocketService.send({ command: 'mouse', parameters: param });
+    console.log(click);
+  }
+
+  releaseMouse() {
+    this.sendClick('release ' + this.lastMouseClick)
   }
 }

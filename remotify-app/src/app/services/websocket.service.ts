@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
 import { ToastController } from '@ionic/angular';
-import {Command} from '../Commands/Command';
+import { Command } from '../Commands/Command';
 
 @Injectable({
   providedIn: 'root'
