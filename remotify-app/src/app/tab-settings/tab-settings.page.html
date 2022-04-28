@@ -16,7 +16,10 @@
       <ion-label>PC IP-Address</ion-label>
       <ion-input id="ip" type="text" formControlName="ip"></ion-input>
     </ion-item>
-
+    <ion-item>
+      <ion-label>Touchpad Sensitivity</ion-label>
+      <ion-input id="touchpadSensitivity" type="number" formControlName="touchpadSensitivity"></ion-input>
+    </ion-item>
     <ion-button type="submit" [disabled]="!settingsForm.valid">submit</ion-button>
   </form>
 </ion-content>

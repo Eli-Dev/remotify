@@ -1,0 +1,31 @@
+= Projektfortschrittsbericht Remotify
+:author: Andy Aziri, Sedad Sultanovic, Elias Gstallnig
+:imagesdir: ../../assets
+
+[cols="^1,5"]
+|====
+|Projektleitung|Sultanovic Sedad
+
+|Projektantrag und -beschreibung
+| https://github.com/Eli-Dev/remotify/blob/main/Documentation/Projekt_Antrag.adoc 
+
+|Status
+a|image::Ampel.PNG[height=20%,width=20%, Ampel]
+
+|Berichtzeitraum
+|Der Bericht beschreibt den Zeitraum zwischen 01.04.2022 und 31.04.2022
+
+|Fortschritt
+a|Abgeschlossene Arbeitspakete: 
+
+. File-Sharing zwischen 2 PCs
+. Maus von Handy aus kontrollieren (mittels Touchpad)
+
+Aktuell in Arbeit:
+
+. Tastatur über Handy
+. File-Sharing zwischen Handy und PC
+
+|Zeitplan
+|Anfangs haben wir uns mit dem Zeitplan etwas verschätzt. Wir haben nun das Gantt-Diagramm überarbeitet und werden voraussichtlich auch bis Mitte Juni fertig.
+|====
