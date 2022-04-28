@@ -19,35 +19,56 @@ namespace FileSharingServer
         }
 
         string rd;
-        byte[] b1;
+        byte[] content;
         string v;
         int m;
 
         Int32 port = 5000;
-        Int32 port1 = 5055;
-        IPAddress localAddr = IPAddress.Parse("192.168.188.46");
+        Int32 port1 = 5001;
+        IPAddress localAddr = IPAddress.Parse("172.17.210.16");
         private void Browse_Click(object sender, EventArgs e)
         {
-             
+
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 textBox1.Text = folderBrowserDialog1.SelectedPath;
-                TcpListener list = new TcpListener(localAddr,port);
-                list.Start();
-                TcpClient client = list.AcceptTcpClient();
-                Stream s = client.GetStream();
-                b1 = new byte[m];
-                s.Read(b1, 0, b1.Length);
-                File.WriteAllBytes(textBox1.Text + "\\" + rd.Substring(0, rd.LastIndexOf('.')), b1);
-                list.Stop();
-                client.Close();
-                label1.Text = "File Received......";
+                content = new byte[m];
+                try
+                {
+                    TcpListener listen = new TcpListener(localAddr, port1);
+                    listen.Start();
+                    TcpClient client = listen.AcceptTcpClient();
+                    NetworkStream writecontent = client.GetStream();
+                    FileStream targetfile = null;
+                    int bytecnt = 0;
+                    try
+                    {
+                        targetfile = File.OpenWrite(textBox1.Text + "\\" + rd.Substring(0, rd.LastIndexOf('.')));
+                        bytecnt = writecontent.Read(content, 0, m);  // this will return byte count from current read
+                        while (bytecnt > 0)  // loop until there's nothing more to read from
+                        {
+                            targetfile.Write(content, 0, bytecnt); // write just the amount you just received
+                            bytecnt = writecontent.Read(content, 0, m);
+                        }
+                        targetfile.Flush();  // before closing filestream, make sure all data has written on disk
+                    }
+                    finally
+                    {
+                        if (targetfile != null) targetfile.Close();
+                    }
+                    listen.Stop();
+                    client.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            TcpListener list = new TcpListener(localAddr, port);
+            TcpListener list = new TcpListener(localAddr, port1);
             list.Start();
             TcpClient client = list.AcceptTcpClient();
             MessageBox.Show("Client trying to connect");

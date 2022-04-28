@@ -48,9 +48,9 @@ namespace FileSharingClient
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(340, 312);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 20);
+            this.label1.Size = new System.Drawing.Size(47, 20);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Server";
+            this.label1.Text = "Client";
             // 
             // openFileDialog1
             // 

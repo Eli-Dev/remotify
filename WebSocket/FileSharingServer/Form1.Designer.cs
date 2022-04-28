@@ -47,9 +47,9 @@ namespace FileSharingServer
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(353, 286);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 20);
+            this.label1.Size = new System.Drawing.Size(50, 20);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Client";
+            this.label1.Text = "Server";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Browse
