@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import io from 'socket.io-client';
+import { FileTransfer } from '@ionic-native/file-transfer/ngx';
+import { File } from '@ionic-native/file/ngx';
+
 
 @Injectable({
   providedIn: 'root'
@@ -7,4 +9,6 @@ import io from 'socket.io-client';
 export class FileuploadService {
 
   constructor() { }
+
+
 }

@@ -34,6 +34,7 @@ export class WebsocketService {
   }
 
   send(cmd: Command<any>) {
+    console.log(cmd);
     this.webSocket.next(cmd);
   }
 
