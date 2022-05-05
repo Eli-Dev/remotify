@@ -27,5 +27,15 @@ namespace MouseControl
         {
             cursor.RightMouseClick(Cursor.Position.X, Cursor.Position.Y);
         }
+
+        public void LeftRelease()
+        {
+            cursor.LeftMouseRelease(Cursor.Position.X, Cursor.Position.Y);
+        }
+
+        public void RightRelease()
+        {
+            cursor.RightMouseRelease(Cursor.Position.X, Cursor.Position.Y);
+        }
     }
 }

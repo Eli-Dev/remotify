@@ -20,6 +20,7 @@ namespace Logic
 
         private void Startup_MessageReceived(object sender, MessageReceivedEventArgs e)
         {
+            Console.WriteLine(e.Message);
             if (e.Message.Contains("mouse"))
             {
                 ResponseEvent<MouseParameter> response = JsonSerializer.Deserialize<ResponseEvent<MouseParameter>>(e.Message);
@@ -27,15 +28,26 @@ namespace Logic
                 if (response.parameters.click == "left")
                 {
                     mouse.LeftClick();
-                } else if (response.parameters.click == "right")
+                } 
+                else if (response.parameters.click == "right")
                 {
                     mouse.RightClick();
                 }
+                else if (response.parameters.click.Contains("release left"))
+                {
+                    mouse.LeftRelease();
+                    
+                }
+                else if (response.parameters.click.Contains("release right"))
+                {
+                    mouse.RightRelease();
+                }
                 mouse.MoveCursor(response.parameters);
             }
-
-
+            if (e.Message.Contains("keyboard"))
+            {
+                
+            }
         }
-
     }
 }

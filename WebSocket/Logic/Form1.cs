@@ -35,6 +35,7 @@ namespace MouseControl
         }
 
         [DllImport("user32.dll", EntryPoint = "SetCursorPos")]
+
         private static extern bool SetCursorPos(double xDiff, double yDiff);
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
@@ -55,13 +56,24 @@ namespace MouseControl
         public void LeftMouseClick(int xCurrentPos, int yCurrentPos)
         {
             mouse_event(MOUSEEVENTF_LEFTDOWN, xCurrentPos, yCurrentPos, 0, 0);
-            mouse_event(MOUSEEVENTF_LEFTUP, xCurrentPos, yCurrentPos, 0, 0);
         }
 
         public void RightMouseClick(int xCurrentPos, int yCurrentPos)
         {
             mouse_event(MOUSEEVENTF_RIGHTDOWN, xCurrentPos, yCurrentPos, 0, 0);
+            
+        }
+
+        public void LeftMouseRelease(int xCurrentPos, int yCurrentPos)
+        {
+            mouse_event(MOUSEEVENTF_LEFTUP, xCurrentPos, yCurrentPos, 0, 0);
+        }
+
+        public void RightMouseRelease(int xCurrentPos, int yCurrentPos)
+        {
             mouse_event(MOUSEEVENTF_RIGHTUP, xCurrentPos, yCurrentPos, 0, 0);
         }
+
+        
     }
 }

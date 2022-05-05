@@ -10,7 +10,6 @@ namespace Logic
     {
         public double xDiff { get; set; }
         public double yDiff { get; set; }
-
         public string click { get; set; }
     }
 }
