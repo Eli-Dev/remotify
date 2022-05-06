@@ -12,6 +12,9 @@ namespace Logic
     public class Controller
     {
         Mouse mouse = new Mouse();
+        Keyboard keyboard = new Keyboard();
+        ResponseEvent<MouseParameter> mouseResponse = new ResponseEvent<MouseParameter>();
+        ResponseEvent<KeyboardParameter> keyboardResponse = new ResponseEvent<KeyboardParameter>();
 
         public Controller()
         {
@@ -23,30 +26,32 @@ namespace Logic
             Console.WriteLine(e.Message);
             if (e.Message.Contains("mouse"))
             {
-                ResponseEvent<MouseParameter> response = JsonSerializer.Deserialize<ResponseEvent<MouseParameter>>(e.Message);
+                mouseResponse = JsonSerializer.Deserialize<ResponseEvent<MouseParameter>>(e.Message);
 
-                if (response.parameters.click == "left")
+                if (mouseResponse.parameters.click == "left")
                 {
                     mouse.LeftClick();
                 } 
-                else if (response.parameters.click == "right")
+                else if (mouseResponse.parameters.click == "right")
                 {
                     mouse.RightClick();
                 }
-                else if (response.parameters.click.Contains("release left"))
+                else if (mouseResponse.parameters.click.Contains("release left"))
                 {
                     mouse.LeftRelease();
                     
                 }
-                else if (response.parameters.click.Contains("release right"))
+                else if (mouseResponse.parameters.click.Contains("release right"))
                 {
                     mouse.RightRelease();
                 }
-                mouse.MoveCursor(response.parameters);
+                mouse.MoveCursor(mouseResponse.parameters);
             }
             if (e.Message.Contains("keyboard"))
             {
-                
+                keyboardResponse = JsonSerializer.Deserialize<ResponseEvent<KeyboardParameter>>(e.Message);
+
+                keyboard.KeyboardInput(keyboardResponse.parameters);
             }
         }
     }

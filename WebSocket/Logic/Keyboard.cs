@@ -12,20 +12,15 @@ namespace Logic
 {
     public class Keyboard
     {
-        static void Main(string[] args)
-        {
-            KeyboardInput();
-        }
 
-        public static void KeyboardInput()
-        {
-            while (true)
-            {
-                InputSimulator sim = new InputSimulator();
-                VirtualKeyCode vCode = (VirtualKeyCode)0x52;
-                sim.Keyboard.KeyPress(vCode);
-                Thread.Sleep(200);
-            }
+        InputSimulator sim = new InputSimulator();
+        KeysConverter converter = new KeysConverter();
+        VirtualKeyCode vCode = new VirtualKeyCode();
+
+        public void KeyboardInput(KeyboardParameter parameters)
+        {   
+            vCode = (VirtualKeyCode) converter.ConvertFromString(parameters.KeyInput);
+            sim.Keyboard.KeyPress(vCode);
         }
     }
 }
