@@ -6,4 +6,15 @@
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Logic\Logic.csproj" />
+    <ProjectReference Include="..\WebSocket\WebSocket.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Interop.NetFwTypeLib">
+      <HintPath>..\Testing\obj\Debug\net5.0-windows\Interop.NetFwTypeLib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

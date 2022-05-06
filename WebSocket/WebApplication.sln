@@ -9,10 +9,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ws.Client", "Ws.Client\Ws.C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logic", "Logic\Logic.csproj", "{5A7168C8-7A47-43FA-9A98-D0414814C5CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing", "Testing\Testing.csproj", "{7B848912-FEEF-4B3F-A092-E69887527C69}"
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileSharingServer", "FileSharingServer\FileSharingServer.csproj", "{5443FD0F-1617-44D1-A98B-A90371C58C3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Testing", "Testing\Testing.csproj", "{7B848912-FEEF-4B3F-A092-E69887527C69}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5443FD0F-1617-44D1-A98B-A90371C58C3F} = {5443FD0F-1617-44D1-A98B-A90371C58C3F}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSharingClient", "FileSharingClient\FileSharingClient.csproj", "{B46C159C-6503-4470-9530-DC82829E7919}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileSharingServer", "FileSharingServer\FileSharingServer.csproj", "{5443FD0F-1617-44D1-A98B-A90371C58C3F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5A7168C8-7A47-43FA-9A98-D0414814C5CA} = {5A7168C8-7A47-43FA-9A98-D0414814C5CA}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +41,10 @@ Global
 		{7B848912-FEEF-4B3F-A092-E69887527C69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B848912-FEEF-4B3F-A092-E69887527C69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B848912-FEEF-4B3F-A092-E69887527C69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5443FD0F-1617-44D1-A98B-A90371C58C3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5443FD0F-1617-44D1-A98B-A90371C58C3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5443FD0F-1617-44D1-A98B-A90371C58C3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5443FD0F-1617-44D1-A98B-A90371C58C3F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

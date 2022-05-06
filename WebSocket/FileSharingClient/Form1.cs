@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.Sockets;
 using System.IO;
+using WebApplication;
 
 namespace FileSharingClient
 {
@@ -35,7 +36,7 @@ namespace FileSharingClient
                 t = op.FileName;
                 FileInfo fi = new FileInfo(textBox1.Text = op.FileName);
                 n = fi.Name + "." + fi.Length;
-                TcpClient client = new TcpClient("172.17.210.16", 5001);
+                TcpClient client = new TcpClient(Utility.GetLocalIPAddress(), 5001);
                 StreamWriter sw = new StreamWriter(client.GetStream());
                 sw.WriteLine(n);
                 sw.Flush();
@@ -45,7 +46,7 @@ namespace FileSharingClient
 
         private void button2_Click(object sender, EventArgs e)
         {
-            TcpClient client = new TcpClient("172.17.210.16", 5001);
+            TcpClient client = new TcpClient(Utility.GetLocalIPAddress(), 5001);
             Stream s = client.GetStream();
             b1 = File.ReadAllBytes(op.FileName);
             s.Write(b1, 0, b1.Length);
