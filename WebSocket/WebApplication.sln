@@ -15,9 +15,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Testing", "Testing\Testing.
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileSharingServer", "FileSharingServer\FileSharingServer.csproj", "{5443FD0F-1617-44D1-A98B-A90371C58C3F}"
-	ProjectSection(ProjectDependencies) = postProject
-		{5A7168C8-7A47-43FA-9A98-D0414814C5CA} = {5A7168C8-7A47-43FA-9A98-D0414814C5CA}
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

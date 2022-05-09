@@ -27,6 +27,7 @@ namespace FileSharingServer
                 textBox1.Text = folderBrowserDialog1.SelectedPath;
                 JSONPath jsonFile = JSONPath.GetInstance;
                 jsonFile.Path = folderBrowserDialog1.SelectedPath;
+                label1.Text = $"http://{Utility.GetLocalIPAddress()}:5001";
 
             }
         }

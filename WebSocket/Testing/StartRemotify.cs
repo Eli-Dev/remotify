@@ -1,5 +1,4 @@
-﻿using FileSharingServer;
-using Logic;
+﻿using Logic;
 using NetFwTypeLib;
 using System;
 using System.Threading;
@@ -7,20 +6,28 @@ using WebApplication;
 
 namespace Testing
 {
-    class Program
+    class StartRemotify
     {
         static void Main(string[] args)
         {
-            //addInboundFirewallRule();
-            //addOutboundFirewallRule();
+            Start();
+        }
+
+        public static void Start()
+        {
             Thread t = new Thread(Websocket.Start);
             t.Start();
             new Controller();
-            //Console.WriteLine("Alo");
             Console.ReadKey();
         }
 
-        private static void addInboundFirewallRule()
+        public static void ConfigureFirewall()
+        {
+            AddInboundFirewallRule();
+            AddOutboundFirewallRule();
+        }
+
+        private static void AddInboundFirewallRule()
         {
             Type tNetFwPolicy2 = Type.GetTypeFromProgID("HNetCfg.FwPolicy2");
             INetFwPolicy2 fwPolicy2 = (INetFwPolicy2)Activator.CreateInstance(tNetFwPolicy2);
@@ -44,7 +51,7 @@ namespace Testing
             addFirewallRule(inboundRule);
         }
 
-        private static void addOutboundFirewallRule()
+        private static void AddOutboundFirewallRule()
         {
             Type tNetFwPolicy2 = Type.GetTypeFromProgID("HNetCfg.FwPolicy2");
             INetFwPolicy2 fwPolicy2 = (INetFwPolicy2)Activator.CreateInstance(tNetFwPolicy2);
