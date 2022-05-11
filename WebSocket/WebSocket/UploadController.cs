@@ -19,9 +19,9 @@ namespace WebSocket
             {
                 var folderName = Path.Combine("Resources", "Images");
                 var file = Request.Form.Files[0];
-                var pathToSave = Path.Combine(@"C:\3BHIF\SYP\Projekt\remotify\WebSocket\WebSocket", folderName);
+                var pathToSave = Path.Combine(WebApplication.Utility.JsonPath);
 
-                if(file.Length > 0)
+                if (file.Length > 0)
                 {
                     var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
                     var fullPath = Path.Combine(pathToSave, fileName);

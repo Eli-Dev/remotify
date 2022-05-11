@@ -9,6 +9,8 @@ using System.Net.Sockets;
 using System.IO;
 using System.Net;
 using WebApplication;
+using System.Threading;
+using Logic;
 
 namespace FileSharingServer
 {
@@ -16,6 +18,7 @@ namespace FileSharingServer
     {
         public Form1()
         {
+            CheckForIllegalCrossThreadCalls = false;
             InitializeComponent();
         }
 
@@ -25,18 +28,36 @@ namespace FileSharingServer
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 textBox1.Text = folderBrowserDialog1.SelectedPath;
-                JSONPath jsonFile = JSONPath.GetInstance;
+                Logic.JSONPath jsonFile = Logic.JSONPath.GetInstance;
                 jsonFile.Path = folderBrowserDialog1.SelectedPath;
-                label1.Text = $"http://{Utility.GetLocalIPAddress()}:5001";
+                Utility.JsonPath = jsonFile.Path;
+                var pathToSave = Path.Combine(WebApplication.Utility.JsonPath);
+                label1.Text = pathToSave;
+                label2.Visible = false;
+
+
+                
 
             }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+           
+            Thread t = new Thread(Websocket.Start);
+            t.IsBackground = true;
+            t.Start();
+            new Controller();
+            label1.Text = label1.Text + $"http://{Utility.GetLocalIPAddress()}:5001";
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }

@@ -17,10 +17,7 @@ namespace FileSharingServer
         [STAThread]
         public static void Main()
         {
-            //Thread t = new Thread(Websocket.Start);
-            //t.Start();
-            //Thread t1 = new Thread(() => new Controller());
-            //t1.Start();
+            
             Start();
         }
         public static void Start()

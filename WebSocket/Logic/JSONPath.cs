@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FileSharingServer
+namespace Logic
 {
     public class JSONPath
     {
@@ -33,7 +33,7 @@ namespace FileSharingServer
 
         public string Path
         {
-            get 
+            get
             {
                 Deserialization();
                 return path;
