@@ -16,7 +16,8 @@ namespace Testing
             t.Start();
             new Controller();
             //Console.WriteLine("Alo");
-            Console.ReadKey();
+            //Keyboard.KeyboardInput();
+            Console.ReadKey();        
         }
 
         private static void addInboundFirewallRule()

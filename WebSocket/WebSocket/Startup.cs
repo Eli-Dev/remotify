@@ -72,6 +72,7 @@ namespace WebApplication
             while(!result.CloseStatus.HasValue)
             {
                 var msg = Encoding.UTF8.GetString(new ArraySegment<byte>(buffer, 0, result.Count));
+                //Console.WriteLine(msg);
                 OnMessageReceived(new MessageReceivedEventArgs { Message = msg });
 
                 //Console.WriteLine($"Client says: {msg}");
