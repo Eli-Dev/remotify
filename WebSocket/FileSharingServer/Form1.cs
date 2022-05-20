@@ -45,9 +45,11 @@ namespace FileSharingServer
         {
            
             Thread t = new Thread(Websocket.Start);
-            t.IsBackground = true;
+            t.IsBackground = false;
             t.Start();
             new Controller();
+            Logic.JSONPath jsonFile = Logic.JSONPath.GetInstance;
+            Utility.JsonPath = jsonFile.Path;
             label1.Text = label1.Text + $"http://{Utility.GetLocalIPAddress()}:5001";
             
         }
@@ -60,6 +62,12 @@ namespace FileSharingServer
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Hide();
+            e.Cancel = true;
         }
     }
 }
