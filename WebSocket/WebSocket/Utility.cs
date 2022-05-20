@@ -20,5 +20,14 @@ namespace WebApplication
 
             throw new Exception("No network adapters with an IPv4 address in the system!");
         }
+
+        static string jsonPath;
+
+        public static string JsonPath
+        {
+            get { return jsonPath; }
+            set { jsonPath = value; }
+        }
+
     }
 }

@@ -1,0 +1,22 @@
+= Fortschritte mit Remotify
+:author: Sedad Sultanovic, Andy Aziri, Elias Gstallnig
+:imagesdir: ../../assets
+
+== Abgeschlossene Arbeitspakete
+
+. File-Sharing zwischen 2 PCs
+. Maus von Handy aus kontrollieren (mittels Touchpad)
+
+=== Aktuell arbeiten wir an...
+
+. Tastatur über Handy
+. File-Sharing zwischen Handy und PC
+
+== Zeitplan
+
+image::Gantt.png[]
+
+== Live Präsentation
+
+* File-Sharing zwischen 2 PCs
+* Maus mit Handy kontrollieren

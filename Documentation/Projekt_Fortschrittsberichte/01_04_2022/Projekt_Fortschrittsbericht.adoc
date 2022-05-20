@@ -1,0 +1,41 @@
+= Projektfortschrittsbericht Remotify
+:author: Andy Aziri, Sedad Sultanovic, Elias Gstallnig
+:imagesdir: assets
+
+[cols="^1,5"]
+|====
+|Projektleitung|Sultanovic Sedad
+
+|Projektantrag und -beschreibung
+| https://github.com/Eli-Dev/remotify/blob/main/Documentation/Projekt_Antrag.adoc 
+
+|Status
+a|image::Ampel.PNG[height=20%,width=20%, Ampel]
+
+|Berichtzeitraum
+|Der Bericht beschreibt den Zeitraum zwischen 04.02.2022 und 10.03.2022
+
+|Fortschritt
+a|Abeschlossene Arbeitspakete: 
+
+. Tastatur auf Windows per Programm kontrollieren
+. Maus auf Windows per Programm kontrollieren
+. App Basics erstellen
+. (Web)- Socket Connection zwischen Handy un PC
+. App erstellen
+
+Aktuell in Arbeit:
+
+. File Sharing
+. Tastatur über Handy kontrollieren
+
+|Zeitplan
+| Es konnte zwar alles in der geplanten Zeit umgesetzt werden, jedoch hängen wir bei den aktuellen Arbeitspaketen ungefähr eine Woche nach, da wir bei den abgeschlossenen Arbeitspaketen einige Bugfixes unternehmen mussten. Zusätzlich konnten 2 Projektbeteiligte gesundheitsbedingt in der Woche vom 07.03.2022 bis zum 13.03.2022 nicht arbeiten
+
+|Zukunft
+| Da wir voraussichtlich erst ab dem 14.03.2022 wieder anfangen können an unserem Projekt zu arbeiten, erwarten wir eine zwei-wöchige Verspätung. Diese versuchen wir in den nächsten Arbeitspaketen auszugleichen.
+
+|====
+
+
+

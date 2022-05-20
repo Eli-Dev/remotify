@@ -28,7 +28,8 @@ export class SettingsService {
   set ip(value: string) {
 
     if (value !== this.webSocket.ip) {
-      this.webSocket.ip = value;
+      this._ip = value;
+      this.webSocket.ip = this._ip;
       this.webSocket.connect();
       this.webSocket.send({ command: 'test', parameters: null });
     }
