@@ -96,7 +96,6 @@ export class TabTouchpadPage implements AfterViewInit {
       click
     };
     this.websocketService.send({ command: 'mouse', parameters: param });
-    console.log(click);
   }
 
   releaseMouse() {

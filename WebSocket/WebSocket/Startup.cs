@@ -3,15 +3,33 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Linq;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Net.WebSockets;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Net.Sockets;
+using System.IO;
+using System.Net;
+using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Http.Features;
+using Microsoft.Extensions.FileProviders;
 
 namespace WebApplication
 {
     public class Startup
     {
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+        public IConfiguration Configuration { get; }
+
         public static event EventHandler<MessageReceivedEventArgs> MessageReceived;
 
         public virtual void OnMessageReceived(MessageReceivedEventArgs e)
@@ -23,6 +41,23 @@ namespace WebApplication
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+                    
+            });
+
+            services.Configure<FormOptions>(o =>
+            {
+                o.ValueLengthLimit = int.MaxValue;
+                o.MultipartBodyLengthLimit = int.MaxValue;
+                o.MemoryBufferThreshold = int.MaxValue;
+            });
+
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,7 +69,26 @@ namespace WebApplication
                 app.UseDeveloperExceptionPage();
             }
 
+
+            app.UseCors("CorsPolicy");
             app.UseRouting();
+            app.UseAuthorization();
+
+            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(@"C:\3BHIF\SYP\Projekt\remotify\WebSocket\WebSocket", @"Resources")),
+                RequestPath = new PathString("/Resources")
+
+            });
+
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            }
+            );
+
             var wsOptions = new WebSocketOptions
             {
                 KeepAliveInterval = TimeSpan.FromSeconds(120)
@@ -64,7 +118,7 @@ namespace WebApplication
             });
         }
 
-        private async Task Receive(WebSocket webSocket)
+        private async Task Receive(System.Net.WebSockets.WebSocket webSocket)
         {
             var buffer = new byte[1024 * 4];
             var result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), System.Threading.CancellationToken.None);
