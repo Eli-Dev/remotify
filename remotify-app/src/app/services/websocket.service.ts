@@ -28,13 +28,11 @@ export class WebsocketService {
           duration: 2000
         });
         await toast.present();
-        this.ip = '';
       }
     );
   }
 
   send(cmd: Command<any>) {
-    console.log(cmd);
     this.webSocket.next(cmd);
   }
 
