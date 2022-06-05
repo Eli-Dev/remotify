@@ -34,7 +34,8 @@
     "cordova-plugin-badge": "^0.8.8",
     "cordova-plugin-device": "^2.1.0",
     "cordova-plugin-filepath": "^1.6.0",
-    "cordova-plugin-local-notification": "^0.9.0-beta.2",
+    "cordova-plugin-local-notification": "file:../ionic-plugins/cordova-plugin-local-notifications",
+    "media-session-control": "file:../ionic-plugins/capacitor-media-session",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
