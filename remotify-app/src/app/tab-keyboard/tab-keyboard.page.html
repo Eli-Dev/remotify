@@ -9,4 +9,8 @@
     <ion-toolbar>
       <ion-title size="large">Keyboard</ion-title>
     </ion-toolbar>
-</ion-header>
+  </ion-header>
+
+  <ion-textarea clearOnEdit="true" (ionChange)="keyboardInput()" [(ngModel)]="input"></ion-textarea>
+  <ion-button (click)="useEffect()"></ion-button>
+</ion-content>

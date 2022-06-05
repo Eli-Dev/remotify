@@ -22,5 +22,9 @@
 	{
 		"pkg": "@robingenz/capacitor-file-picker",
 		"classpath": "dev.robingenz.capacitorjs.plugins.filepicker.FilePickerPlugin"
+	},
+	{
+		"pkg": "media-session-control",
+		"classpath": "nl.videodock.mediasession.CapacitorMediaSessionPlugin"
 	}
 ]
