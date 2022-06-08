@@ -51,7 +51,14 @@ namespace Logic
             {
                 keyboardResponse = JsonSerializer.Deserialize<ResponseEvent<KeyboardParameter>>(e.Message);
 
-                keyboard.KeyboardInput(keyboardResponse.parameters);
+                if (keyboardResponse.parameters == null)
+                {
+                    keyboard.KeyboardInput(" ");
+                }
+                else
+                {
+                    keyboard.KeyboardInput(keyboardResponse.parameters.keyInput);
+                }
             }
         }
     }

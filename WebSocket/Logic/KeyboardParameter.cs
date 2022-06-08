@@ -8,6 +8,6 @@ namespace Logic
 {
     public class KeyboardParameter
     {
-        public string KeyInput { get; set; }
+        public string keyInput { get; set; }
     }
 }
