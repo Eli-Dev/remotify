@@ -11,8 +11,8 @@ namespace Logic
     {
         private static readonly JSONPath instance = new JSONPath();
         private string path;
-        private string jsonFileName = System.IO.Path.Combine(@"C:\3BHIF\SYP\Projekt\remotify\WebSocket\FileSharingServer", "configPath.json");
-
+        private string jsonFileName = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location)
+            , "configPath.json");
         static JSONPath()
         {
 
@@ -48,6 +48,10 @@ namespace Logic
 
         private void Deserialization()
         {
+            if (!File.Exists(jsonFileName))
+            {
+                File.Create(jsonFileName).Close();
+            }
             path = File.ReadAllText(jsonFileName);
         }
 

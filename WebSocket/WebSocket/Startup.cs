@@ -74,10 +74,18 @@ namespace WebApplication
             app.UseRouting();
             app.UseAuthorization();
 
+            string staticFilePath = Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location),
+                @"Resources");
+
+            if (!Directory.Exists(staticFilePath))
+            {
+                Directory.CreateDirectory(staticFilePath);
+            }
+
             app.UseStaticFiles();
             app.UseStaticFiles(new StaticFileOptions
             {
-                FileProvider = new PhysicalFileProvider(Path.Combine(@"C:\3BHIF\SYP\Projekt\remotify\WebSocket\WebSocket", @"Resources")),
+                FileProvider = new PhysicalFileProvider(staticFilePath),
                 RequestPath = new PathString("/Resources")
 
             });

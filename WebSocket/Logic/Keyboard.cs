@@ -14,13 +14,38 @@ namespace Logic
     {
 
         InputSimulator sim = new InputSimulator();
-        KeysConverter converter = new KeysConverter();
         VirtualKeyCode vCode = new VirtualKeyCode();
 
-        public void KeyboardInput(KeyboardParameter parameters)
-        {   
-            vCode = (VirtualKeyCode) converter.ConvertFromString(parameters.KeyInput);
-            sim.Keyboard.KeyPress(vCode);
+        bool isCapital = false;
+
+        public void KeyboardInput(string parameters)
+        {
+            if (parameters == " ") 
+            {
+                sim.Keyboard.KeyPress(VirtualKeyCode.SPACE);
+            }
+            else if (parameters.Length == 1)
+            {
+                if (char.IsUpper(parameters[0]))
+                {
+                    sim.Keyboard.KeyPress(VirtualKeyCode.CAPITAL);
+                    isCapital = true;
+                }
+
+                vCode = Enum.Parse<VirtualKeyCode>("VK_" + parameters, true);
+                sim.Keyboard.KeyPress(vCode);
+
+                if (isCapital)
+                {
+                    isCapital = false;
+                    sim.Keyboard.KeyPress(VirtualKeyCode.CAPITAL);
+                }
+            }
+            else
+            {
+                vCode = Enum.Parse<VirtualKeyCode>(parameters, true);
+                sim.Keyboard.KeyPress(vCode);
+            }
         }
     }
 }

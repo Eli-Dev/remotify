@@ -99,6 +99,6 @@ export class TabTouchpadPage implements AfterViewInit {
   }
 
   releaseMouse() {
-    this.sendClick('release ' + this.lastMouseClick)
+    this.sendClick('release ' + this.lastMouseClick);
   }
 }

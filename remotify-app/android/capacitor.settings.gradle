@@ -19,3 +19,6 @@ project(':capacitor-status-bar').projectDir = new File('../node_modules/@capacit
 
 include ':robingenz-capacitor-file-picker'
 project(':robingenz-capacitor-file-picker').projectDir = new File('../node_modules/@robingenz/capacitor-file-picker/android')
+
+include ':media-session-control'
+project(':media-session-control').projectDir = new File('../../ionic-plugins/capacitor-media-session/android')
