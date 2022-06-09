@@ -15,6 +15,9 @@ export class WebsocketService {
   }
 
   connect() {
+    if (this.webSocket != null) {
+      this.webSocket.unsubscribe();
+    }
     this.webSocket = webSocket<Command<any>>({
       url: `ws://${this.ip}:5001/ws`
     });
@@ -28,11 +31,20 @@ export class WebsocketService {
           duration: 2000
         });
         await toast.present();
+        console.log(error);
+
+        this.webSocket.unsubscribe();
+        this.webSocket = null;
       }
     );
   }
 
   send(cmd: Command<any>) {
+    //console.log(cmd);
+    if (this.webSocket == null) {
+      this.connect();
+    }
+
     this.webSocket.next(cmd);
   }
 
