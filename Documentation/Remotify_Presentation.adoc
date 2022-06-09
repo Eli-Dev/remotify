@@ -1,0 +1,55 @@
+= Remotify
+:author: Andy Aziri, Elias Gstallnig, Sedad Sultanovic
+//:revealjsdir: /home/eli/files/Random_Stuff/AsciiDoc/revealjs/reveal.js
+:revealjsdir: https://cdn.jsdelivr.net/npm/reveal.js@4.3.1
+
+== Was kann Remotify
+
+* Fernbedienung für den PC/Laptop
+    ** Maus/Tastatur fernsteuern
+* Dateien schnell von Handy auf PC
+
+=== Warum Remotify
+
+* Laptop am Fernseher
+* Präsentationen
+    ** Schnell etwas korrigieren
+    ** Folien wechseln mit Tasten
+        *** Nicht so leicht verdrücken
+        *** Auch wenn Display aus
+* Bild aufnehmen und am PC nutzen
+
+== Benutzte Technologien
+
+* Typescript/CSS/HTML/Java
+    ** Ionic/Angular (Capacitor)
+* C#
+    ** ASP.Net Core
+    ** Windows Forms
+* Github
+
+[.notes]
+--
+* Wer was
+--
+
+== Web-App & Demonstration
+
+== Review
+
+=== Was schlecht gelaufen ist
+
+* Zeitliche Einteilung
+    ** Anfangs Zeitaufwand unterschätzt
+    ** Projekt neben Schule schwierig
+* Lernaufwand (ASP.Net, Ionic)
+
+=== Was gut gelaufen ist
+
+* Viel gelernt
+    ** Neue Technologien
+    ** Erfahrung mit Teamarbeit
+    ** Dokumentation
+* Alle Projektziele zeitgerecht erreicht
+
+== ENDE
