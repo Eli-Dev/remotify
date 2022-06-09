@@ -30,10 +30,7 @@ export class TabKeyboardPage implements OnInit {
     }
 
     this.lastLength = length;
-
-    const param: KeyboardParameter = { keyInput: inputChar };
-    //console.log(param);
-    this.websocketService.send({ command: 'keyboard', parameters: param });
+    this.sendKey(inputChar);
   }
 
   useEffect() {
@@ -49,10 +46,12 @@ export class TabKeyboardPage implements OnInit {
 
     CapacitorMediaSession.addListener('mediaSessionEvent', event => {
       if (event.eventName === 'onVolumeUp') {
-        console.log('up');
+        //console.log('up');
+        this.sendKey('n');
       }
       else if (event.eventName === 'onVolumeDown') {
-        console.log('down');
+        //console.log('down');
+        this.sendKey('p');
       }
     });
 
@@ -86,7 +85,9 @@ export class TabKeyboardPage implements OnInit {
         file.play({ playAudioWhenScreenIsLocked: true });
       }
     });*/
+  }
 
-
+  sendKey(key: string) {
+    this.websocketService.send({ command: 'keyboard', parameters: { keyInput: key } });
   }
 }
